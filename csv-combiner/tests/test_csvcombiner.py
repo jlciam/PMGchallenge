@@ -4,7 +4,7 @@ import pytest
 from csvcombiner import correct_arguments
 from csvcombiner import grab_headers
 from csvcombiner import csv_combine
-from csvcombiner import main
+from csvcombiner import main as csv_main
 
 accessories = 'accessories.csv'
 clothing = 'clothing.csv'
@@ -51,7 +51,7 @@ class CsvCombinerTest(unittest.TestCase):
 
     def test_all_happy_path(self):
         # Test that all the units work together for unit test completeness
-        main([accessories, clothing, household_cleaners])
+        csv_main([accessories, clothing, household_cleaners])
         captured = self.capsys.readouterr()
         self.assertEqual(combined_all, captured.out)
 
