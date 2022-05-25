@@ -39,14 +39,14 @@ def correct_arguments(args) -> None:
             raise TypeError(path + ' is not a .csv file.')
 
 
-def main():
+def main(csv_path):
+    correct_arguments(csv_path)
+    csv_combine(csv_path)
+
+
+if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Combines two or more csv files')
     parser.add_argument('csv_path', nargs='+', help='files you want to combine')
 
     args = parser.parse_args()
-    correct_arguments(args.csv_path)
-    csv_combine(args.csv_path)
-
-
-if __name__ == "__main__":
-    main()
+    main(args.csv_path)
